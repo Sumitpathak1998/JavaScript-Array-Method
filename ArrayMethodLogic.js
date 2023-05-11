@@ -145,3 +145,49 @@ function checkElement( arr, value , b = 0 ){
 }
 
 console.log(checkElement(arr,34));
+
+// 8) Reverse()
+// It will reverse the array and it will modify the original array
+
+function reverseArray(arr){
+    for( let i = 0 ; i <= arr.length/2 ; i++){
+        let temp = arr[i];
+        arr[i] = arr[arr.length-1-i];
+        arr[arr.length-1-i] = temp ; 
+    }
+    return arr ; 
+}
+console.log(reverseArray(arr));
+
+// 9) sort()
+// It is higher order function 
+// syntax : array_reference.sort( (a,b) => a-b )
+// If the difference is +ve descending 
+// If the difference is -ve ascending
+
+function sortArray(arr,a = arr[0], b = arr[1]){
+    if( a-b < 0 ){
+       for( let i = 1 ; i < arr.length ; i++ ){
+        let current = arr[i] ; 
+        let j = i-1;
+        while( j >= 0 && current < arr[j]){
+            arr[j+1] = arr[j];
+            j-- ; 
+        } 
+        arr[j+1] = current ; 
+       }
+       return arr ;  
+    }else if( (a-b) >= 0 ) {
+        for( let i = 1 ; i < arr.length ; i++ ){
+            let current = arr[i];
+            let j = i-1 ; 
+            while( j >= 0 && current > arr[j]){
+                arr[j+1] = arr[j];
+                j--;     
+            } 
+            arr[j+1] = current ; 
+        }
+        return arr ; 
+    }
+}
+console.log(sortArray(arr,20,10));
